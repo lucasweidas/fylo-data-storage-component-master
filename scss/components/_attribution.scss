@@ -1,0 +1,28 @@
+@use '../abstracts/' as *;
+
+.attribution {
+  padding: rem(24) clamp(rem(16), 6.5vw, rem(24));
+  margin-block-start: rem(16);
+  text-align: center;
+
+  a:where(:hover, :focus-visible) {
+    color: var(--white);
+    text-decoration: underline;
+  }
+
+  .fa-heart {
+    margin-inline: 0.125em;
+    animation: heart-pulse 2000ms linear infinite;
+
+    @keyframes heart-pulse {
+      0%,
+      100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.2);
+        color: var(--white);
+      }
+    }
+  }
+}

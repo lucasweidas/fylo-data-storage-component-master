@@ -1,0 +1,9 @@
+@use '../abstracts' as *;
+
+.container {
+  --radius: 0.625rem;
+  width: min(100%, rem(540));
+  background-color: var(--blue-8);
+  border-radius: var(--radius);
+  box-shadow: 0 0 rem(20) rgba(black, 0.1);
+}

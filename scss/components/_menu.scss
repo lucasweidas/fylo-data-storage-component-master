@@ -1,0 +1,48 @@
+@use '../abstracts' as *;
+
+.menu {
+  padding: clamp(rem(28), 11vw, rem(40));
+  border-start-end-radius: rem(68);
+
+  @include breakpoint(large) {
+    width: min(100%, rem(350));
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: rem(16);
+    margin-block-start: rem(32);
+  }
+
+  &__button {
+    --button-size: 3rem;
+    width: var(--button-size);
+    height: var(--button-size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--blue-9);
+    border: none;
+    border-radius: rem(10);
+    cursor: pointer;
+
+    svg {
+      transition: transform 200ms ease;
+
+      path {
+        transition: fill 200ms ease;
+      }
+    }
+
+    &:where(:hover, :focus-visible) {
+      svg {
+        transform: scale(1.1);
+
+        path {
+          fill: var(--white);
+        }
+      }
+    }
+  }
+}

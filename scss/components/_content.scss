@@ -1,0 +1,112 @@
+@use '../abstracts' as *;
+
+.content {
+  position: relative;
+  padding-block: clamp(rem(22), 9vw, rem(32)) rem(54);
+  padding-inline: clamp(rem(22), 9vw, rem(32));
+
+  @include breakpoint(large) {
+    padding: rem(40);
+  }
+
+  &__storage {
+    margin-block-start: rem(14);
+  }
+
+  .storage {
+    &__bar {
+      --bar-height: 1.25rem;
+      --bar-padding: 0.188rem;
+      height: var(--bar-height);
+      background-color: var(--blue-9);
+      border-radius: calc(var(--bar-height) / 2);
+      padding: rem(3);
+
+      span {
+        --bar-progress-height: 0.875rem;
+        width: 81.5%;
+        height: var(--bar-progress-height);
+        display: block;
+        position: relative;
+        background-image: var(--gradient-0);
+        border-radius: calc(var(--bar-progress-height) / 2);
+
+        &::before {
+          --bar-icon-size: 0.625rem;
+          --bar-icon-space: 0.125rem;
+          content: '';
+          width: var(--bar-icon-size);
+          height: var(--bar-icon-size);
+          position: absolute;
+          background-color: var(--white);
+          border-radius: 50%;
+          top: var(--bar-icon-space);
+          right: var(--bar-icon-space);
+        }
+      }
+    }
+
+    &__values {
+      display: flex;
+      justify-content: space-between;
+      margin-block-start: rem(12);
+      font-weight: 700;
+      color: var(--blue-2);
+    }
+
+    &__remaining {
+      width: fit-content;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: rem(10);
+      position: absolute;
+      top: calc(100% - rem(36));
+      left: 50%;
+      background-color: var(--white);
+      padding: rem(16) rem(24);
+      border-radius: var(--radius);
+      color: var(--blue-5);
+      transform: translateX(-50%);
+
+      @include breakpoint(large) {
+        inset: rem(-47) rem(40) auto auto;
+        border-end-end-radius: 0;
+        transform: none;
+
+        &::after {
+          --bubble-size: 1.375rem;
+          content: '';
+          width: 0;
+          display: block;
+          position: absolute;
+          bottom: calc(var(--bubble-size) * -1);
+          right: 0;
+          z-index: 1;
+          border-style: solid;
+          border-width: 0 var(--bubble-size) var(--bubble-size) 0;
+          border-color: transparent var(--white) transparent transparent;
+        }
+      }
+
+      span {
+        font-weight: 700;
+        line-height: 1;
+      }
+
+      .remaining {
+        &__value {
+          font-size: var(--font-size-2);
+          font-weight: 700;
+          color: var(--blue-9);
+        }
+
+        &__label {
+          font-size: var(--font-size-0);
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+        }
+      }
+    }
+  }
+}
